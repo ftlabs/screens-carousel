@@ -3,7 +3,7 @@ Takes a carousel url and fires events when the carousel url changes.
 
 # Example Usage
 
-```
+``` js
   const Carousel = require('ftlabs-screens-carousel');
 
 	const carousel = new Carousel(
