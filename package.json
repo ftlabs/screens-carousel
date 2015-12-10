@@ -1,6 +1,6 @@
 {
   "name": "ftlabs-screens-carousel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Takes a carousel url and fires events when the carousel url changes",
   "main": "build/index.js",
   "scripts": {
