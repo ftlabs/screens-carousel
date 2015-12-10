@@ -3,6 +3,7 @@
 var transformUrl = require('./urls');
 var EventEmitter = require('events');
 var util = require('util');
+var querystring = require('query-string');
 
 function getFrames(url, host) {
 	var params = querystring.parse(url.split('?')[1]);

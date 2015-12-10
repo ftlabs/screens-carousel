@@ -13,9 +13,16 @@
     "babel-preset-es2015": "^6.1.18"
   },
   "babel": {
-    "presets": ["es2015"],
-    "plugins": ["transform-es2015-modules-commonjs"]
+    "presets": [
+      "es2015"
+    ],
+    "plugins": [
+      "transform-es2015-modules-commonjs"
+    ]
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "query-string": "^3.0.0"
+  }
 }
