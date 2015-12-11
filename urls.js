@@ -1,4 +1,5 @@
 'use strict';
+
 var parseQueryString = require('query-string').parse;
 
 function isYoutube(url) {
@@ -6,13 +7,13 @@ function isYoutube(url) {
 	return isYoutubeRegex.test(url);
 }
 
-function isImage(url){
-	var isAnImageRegex =/\.(gif|jpg|jpeg|tiff|png)$/i;
+function isImage(url) {
+	var isAnImageRegex = /\.(gif|jpg|jpeg|tiff|png)$/i;
 	return isAnImageRegex.test(url);
 }
 
-function isSupportedByImageService(url){
-	var isAnImageRegex =/\.(jpg|jpeg|tiff|png)$/i;
+function isSupportedByImageService(url) {
+	var isAnImageRegex = /\.(jpg|jpeg|tiff|png)$/i;
 	return isAnImageRegex.test(url);
 }
 
@@ -44,7 +45,7 @@ function tranformFTVideo(url, host) {
 	return host + '/generators/ftvideo/?id=' + id;
 }
 
-module.exports = function transform (url, host) {
+module.exports = function transform(url, host) {
 	if (isYoutube(url)) {
 		var queryParams = parseQueryString(url.split('?')[1]);
 
@@ -53,13 +54,13 @@ module.exports = function transform (url, host) {
 		} else if (queryParams.v) {
 			url = transformYoutubeVideo(queryParams);
 		}
-	} else if (isImage(url)){
+	} else if (isImage(url)) {
 		if (isSupportedByImageService(url)) {
 			url = transformImageWithImageService(url, host);
 		} else {
 			url = transformImage(url, host);
 		}
-	} else if (isFTVideo(url)){
+	} else if (isFTVideo(url)) {
 		url = tranformFTVideo(url, host);
 	}
 	return url;
