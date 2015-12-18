@@ -5,6 +5,8 @@
 const chai = require('chai');
 const expect = chai.expect;
 const Carousel = require('../build');
+const lolex = require("lolex");
+const clock = lolex.install();
 const testUrl = 'http://localhost:3010/generators/carousel?' +
 	'title=Editorial%20FT%20Pages&' +
 	'u=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D9dxiTuPy9dQ&d=&' +
@@ -37,6 +39,7 @@ describe('It should transform urls correctly', function() {
 			expect(url).to.equal('http://example.com/generators/image/?https%3A%2F%2Fimage.webservices.ft.com%2Fv1%2Fimages%2Fraw%2Fhttp%253A%252F%252F40.media.tumblr.com%252F23262af37efc39ddd56d2027ef6cbc22%252Ftumblr_nz045mpSxR1u3akyno1_1280.jpg%3Fsource%3Dscreens&title=tumblr_nz045mpSxR1u3akyno1_1280.jpg');
 			done();
 		});
+		clock.next();
 	});
 
 	it ('Should change after 20s', function (done) {
@@ -48,6 +51,7 @@ describe('It should transform urls correctly', function() {
 			expect(url).to.equal('http://example.com/generators/image/?https%3A%2F%2Fmedia.giphy.com%2Fmedia%2FbvT334mDMvXe8%2Fgiphy.gif&title=giphy.gif');
 			done();
 		});
+		clock.next();
 	});
 
 	it ('Should change to ftvideo after 2s, if timeout is zero', function (done) {
@@ -59,6 +63,7 @@ describe('It should transform urls correctly', function() {
 			expect(url).to.equal('http://example.com/generators/ftvideo/?id=4665768882001');
 			done();
 		});
+		clock.next();
 	});
 
 	it ('Should change to the youtube playlist after 2s because 2s is the declared time', function (done) {
@@ -70,6 +75,7 @@ describe('It should transform urls correctly', function() {
 			expect(url).to.match(/^https:\/\/www.youtube.com\/embed\/videoseries\?autoplay=1&controls=0&loop=1&html5=1&showinfo=0&listType=playlist&list=/);
 			done();
 		});
+		clock.next();
 	});
 
 	it ('Should return to beginning after 5s', function (done) {
@@ -81,5 +87,6 @@ describe('It should transform urls correctly', function() {
 			expect(url).to.equal('https://www.youtube.com/embed/9dxiTuPy9dQ?autoplay=1&controls=0&loop=1&html5=1&showinfo=0&playlist=9dxiTuPy9dQ');
 			done();
 		});
+		clock.next();
 	});
 });
