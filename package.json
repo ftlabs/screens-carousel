@@ -14,6 +14,7 @@
     "babel-preset-es2015": "^6.1.18",
     "chai": "^3.4.1",
     "git-directory-deploy": "^1.3.0",
+    "lolex": "^1.4.0",
     "mocha": "^2.3.4"
   },
   "babel": {
@@ -27,6 +28,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "lolex": "^1.4.0",
     "query-string": "^3.0.0"
   }
 }
