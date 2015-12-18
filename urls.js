@@ -1,24 +1,24 @@
 'use strict';
 
 var parseQueryString = require('query-string').parse;
+var isYoutubeRegex = /^(https?:\/\/)?(www\.)youtube\.com\//;
+var isAnImageRegex = /\.(gif|jpg|jpeg|tiff|png)$/i;
+var isASupportedImageRegex = /\.(jpg|jpeg|tiff|png)$/i;
+var isFTVidRegex = /^(https?:\/\/)?video\.ft\.com\/(\d{7,})(\/.*)?$/;
 
 function isYoutube(url) {
-	var isYoutubeRegex = /^(https?:\/\/)?(www\.)youtube\.com\/watch\?/;
 	return isYoutubeRegex.test(url);
 }
 
 function isImage(url) {
-	var isAnImageRegex = /\.(gif|jpg|jpeg|tiff|png)$/i;
 	return isAnImageRegex.test(url);
 }
 
 function isSupportedByImageService(url) {
-	var isAnImageRegex = /\.(jpg|jpeg|tiff|png)$/i;
-	return isAnImageRegex.test(url);
+	return isASupportedImageRegex.test(url);
 }
 
 function isFTVideo(url) {
-	var isFTVidRegex = /^(https?:\/\/)?video\.ft\.com\/(\d{7,})(\/.*)?$/;
 	return isFTVidRegex.test(url);
 }
 
