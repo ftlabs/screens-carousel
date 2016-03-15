@@ -65,6 +65,7 @@ Carousel.prototype.getCurrentURL = function getCurrentURL() {
 };
 
 Carousel.prototype.changeFrame = function changeFrame(frames, i) {
+	var _this = this;
 
 	if (i >= frames.length) {
 		i = 0;
@@ -72,10 +73,14 @@ Carousel.prototype.changeFrame = function changeFrame(frames, i) {
 	var url = frames[i][0];
 	var duration = frames[i][1] * 1000;
 
-	console.log('changeFrame: i=' + i + ', duration=' + duration + ', url=' + url);
+	setTimeout(function () {
 
-	this.url = url;
-	this.emit('change', url);
+		console.log('changeFrame: i=' + i + ', duration=' + duration + ', url=' + url);
+
+		_this.url = url;
+		_this.emit('change', url);
+	}, 0);
+
 	this.carouselTimeout = setTimeout(this.changeFrame.bind(this), duration, frames, i + 1);
 };
 
