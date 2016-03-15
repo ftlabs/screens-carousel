@@ -20,18 +20,18 @@ describe('It should transform urls correctly', function() {
 
 	const carousel = new Carousel(testUrl, 'http://example.com');
 
-	it('Should have the correct title', function (done) {
+	it('Should have the correct title', function () {
 		expect(carousel.getTitle()).to.equal('Editorial FT Pages');
-		done();
 	});
 
-	it('Should have the first url correctly transformed', function (done) {
+	it('Should have the first url correctly transformed', function () {
+		clock.next();
 		expect(carousel.getCurrentURL()).to.equal('https://www.youtube.com/embed/9dxiTuPy9dQ?autoplay=1&controls=0&loop=1&html5=1&showinfo=0&playlist=9dxiTuPy9dQ');
-		done();
 	});
 
 	let carouselStarted = Date.now();
 	it ('Should change after 10s', function (done) {
+		clock.next();
 		this.timeout(11000);
 		carousel.once('change', function (url) {
 			const duration = Date.now() - carouselStarted;
@@ -45,6 +45,7 @@ describe('It should transform urls correctly', function() {
 	it ('Should change after 20s', function (done) {
 		carouselStarted = Date.now();
 		this.timeout(21000);
+		clock.next();
 		carousel.once('change', function (url) {
 			const duration = Date.now() - carouselStarted;
 			expect(duration).to.be.above(19995);
@@ -57,6 +58,7 @@ describe('It should transform urls correctly', function() {
 	it ('Should change to ftvideo after 2s, if timeout is zero', function (done) {
 		carouselStarted = Date.now();
 		this.timeout(3000);
+		clock.next();
 		carousel.once('change', function (url) {
 			const duration = Date.now() - carouselStarted;
 			expect(duration).to.be.above(1995);
@@ -69,6 +71,7 @@ describe('It should transform urls correctly', function() {
 	it ('Should change to the youtube playlist after 2s because 2s is the declared time', function (done) {
 		carouselStarted = Date.now();
 		this.timeout(3000);
+		clock.next();
 		carousel.once('change', function (url) {
 			const duration = Date.now() - carouselStarted;
 			expect(duration).to.be.above(1995);
@@ -81,6 +84,7 @@ describe('It should transform urls correctly', function() {
 	it ('Should return to beginning after 5s', function (done) {
 		carouselStarted = Date.now();
 		this.timeout(6000);
+		clock.next();
 		carousel.once('change', function (url) {
 			const duration = Date.now() - carouselStarted;
 			expect(duration).to.be.above(4995);
