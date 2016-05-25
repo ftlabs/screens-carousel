@@ -64,6 +64,10 @@ Carousel.prototype.getCurrentURL = function getCurrentURL() {
 	return this.url;
 };
 
+Carousel.prototype.timeUntilNext = function timeUntilNext() {
+	return Math.max(this.changeTime - Date.now(), 0);
+};
+
 Carousel.prototype.changeFrame = function changeFrame(frames, i) {
 	var _this = this;
 
@@ -76,6 +80,7 @@ Carousel.prototype.changeFrame = function changeFrame(frames, i) {
 	setTimeout(function () {
 
 		console.log('changeFrame: i=' + i + ', duration=' + duration + ', url=' + url);
+		_this.changeTime = Date.now() + duration;
 
 		_this.url = url;
 		_this.emit('change', url);

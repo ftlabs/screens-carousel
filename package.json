@@ -1,12 +1,11 @@
 {
   "name": "ftlabs-screens-carousel",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "",
   "main": "index.js",
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lolex": "^1.4.0",
     "query-string": "^3.0.0"
   }
 }
