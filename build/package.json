@@ -6,7 +6,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lolex": "^1.4.0",
     "query-string": "^3.0.0"
   }
 }
